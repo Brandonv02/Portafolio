@@ -64,11 +64,10 @@ const scrollActive = (scrollY) => {
 /*==================== EFECTO DE ESCRITURA ====================*/
 const typedEl = document.getElementById("typed");
 const roles = [
-  "Front-End Developer",
-  "Mobile Developer",
-  "Desarrollador Ionic",
-  "SwiftUI & Kotlin",
-  "Node.js & Express",
+  "Senior Software Developer",
+  "Desarrollador Mobile",
+  "Desarrollador iOS y Android",
+  "Desarrollador Web y APIs",
 ];
 let roleIndex = 0;
 let charIndex = 0;
@@ -115,22 +114,6 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
 );
 revealEls.forEach((el) => revealObserver.observe(el));
-
-/*==================== BARRAS DE HABILIDADES ====================*/
-const skillBars = document.querySelectorAll(".skill-card__bar span");
-const skillObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        bar.style.width = bar.getAttribute("data-level");
-        observer.unobserve(bar);
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
-skillBars.forEach((bar) => skillObserver.observe(bar));
 
 /*==================== CONTADORES ANIMADOS ====================*/
 const counters = document.querySelectorAll(".stat__number");
@@ -230,22 +213,5 @@ if (cursorDot && cursorRing && !isTouch) {
     el.addEventListener("mouseleave", () =>
       cursorRing.classList.remove("is-hover")
     );
-  });
-}
-
-/*==================== FORMULARIO (demo) ====================*/
-const contactForm = document.querySelector(".contact__form");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector(".contact__button");
-    const original = btn.innerHTML;
-    btn.innerHTML = '¡Mensaje enviado! <i class="bx bx-check"></i>';
-    btn.style.background = "linear-gradient(120deg,#22c55e,#22d3ee)";
-    contactForm.reset();
-    setTimeout(() => {
-      btn.innerHTML = original;
-      btn.style.background = "";
-    }, 2600);
   });
 }
